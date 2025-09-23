@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="275dp"
+        android:layout_height="74dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="666dp"
+        android:gravity="center"
+        android:text="Convert PDF to Word"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="625dp"
+        android:gravity="center"
+        android:text="Transform your PDF documents into editable Word files" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="592dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="77dp"
+        android:gravity="center"
+        android:text="Supported formats: PDF up to 50MB\nOCR technology will extract text from scanned documents"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="403dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="153dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="177dp"
+        android:background="@drawable/decorative_background" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="88dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="173dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="410dp"
+
+        android:src="@drawable/outline_add_notes_24"
+        android:scaleType="fitCenter" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="484dp"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="222dp"
+        android:background="@drawable/button_blue"
+        android:drawableLeft="@drawable/outline_backup_24"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Choose PDF file"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="335dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="334dp"
+        android:gravity="center"
+        android:text="choose a PDF file form your storage"
+        android:textSize="16sp" />
+
+</RelativeLayout>
