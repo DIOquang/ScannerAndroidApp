@@ -10,6 +10,7 @@ activityCompose = "1.10.1"
 composeBom = "2024.09.00"
 recyclerview = "1.4.0"
 fragment = "1.8.9"
+realm = "10.17.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,4 +34,6 @@ androidx-fragment = { group = "androidx.fragment", name = "fragment", version.re
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+realmJava = { id = "io.realm.realm-java", version.ref = "realm" }
+
 
