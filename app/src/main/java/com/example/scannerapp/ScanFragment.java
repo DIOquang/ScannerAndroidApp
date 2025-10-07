@@ -199,4 +199,6 @@ public class ScanFragment extends Fragment {
             });
         }
     }
+
+
 }
