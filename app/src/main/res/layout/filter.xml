@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+
+    <jp.co.cyberagent.android.gpuimage.GPUImageView
+        android:id="@+id/gpuImageView"
+        android:layout_width="match_parent"
+        android:layout_height="642dp"
+        android:layout_weight="1"
+        app:gpuimage_show_loading="false"
+        app:gpuimage_surface_type="texture_view" />
+
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="50" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGray"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:text="Gray"
+            app:cornerRadius="12sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContrast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Contrast"
+            app:cornerRadius="12sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Cancel"
+            app:cornerRadius="12sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Confirm"
+            app:cornerRadius="12sp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

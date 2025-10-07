@@ -3,10 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="233dp"
+        android:layout_height="208dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/img" />
 
     <EditText
         android:id="@+id/edit_text_email"
@@ -25,12 +33,13 @@
         android:inputType="textPassword"
         android:minHeight="48dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Đăng nhập" />
+        android:text="Đăng nhập"
+        app:cornerRadius="12sp" />
 
     <TextView
         android:id="@+id/text_view_register_link"

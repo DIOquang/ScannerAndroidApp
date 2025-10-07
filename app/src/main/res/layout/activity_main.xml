@@ -22,27 +22,41 @@
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_navigation">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="224dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="93dp"
+            android:layout_marginEnd="94dp"
+            android:src="@drawable/img" />
+
         <TextView
             android:id="@+id/text_view_welcome"
             android:layout_width="132dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="3dp"
             android:layout_weight="1"
-            android:text="Xin chào, ..."
+            android:text="Xin chào\n ..."
             android:textColor="@android:color/black"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/btn_logout"
             style="?attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="33dp"
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="69dp"
-            android:text="Đăng xuất"
+            android:text="Logout"
             android:textAllCaps="false"
-            android:textSize="11sp"
-            android:textColor="?attr/colorPrimary" />
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"/>
     </RelativeLayout>
 
 </RelativeLayout>

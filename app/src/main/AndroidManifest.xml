@@ -2,14 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
 
     <application
@@ -46,6 +48,31 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+
+        <activity
+            android:name=".CropActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".RotateActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".FilterActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".LastActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.canhub.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
     </application>
 
 </manifest>

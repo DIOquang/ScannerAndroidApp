@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 2. Hiển thị lời chào
         if (userEmail != null && !userEmail.isEmpty()) {
-            welcomeTextView.setText("Xin chào, " + userEmail);
+            welcomeTextView.setText("Wellcome!!\n" + userEmail);
         }
 
         // 3. Xử lý sự kiện đăng xuất

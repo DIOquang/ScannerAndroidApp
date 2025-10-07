@@ -65,5 +65,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("jp.co.cyberagent.android:gpuimage:2.1.0")
+    implementation("com.vanniktech:android-image-cropper:4.6.0")
+
 
 }
