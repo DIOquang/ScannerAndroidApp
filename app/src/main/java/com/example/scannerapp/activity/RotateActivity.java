@@ -1,4 +1,4 @@
-package com.example.scannerapp;
+package com.example.scannerapp.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.scannerapp.BitmapHolder;
+import com.example.scannerapp.R;
 
 public class RotateActivity extends AppCompatActivity {
 
@@ -44,7 +47,7 @@ public class RotateActivity extends AppCompatActivity {
         });
         confirm.setOnClickListener(v-> {
             BitmapHolder.setBitmap(currentBitmap);
-            Intent intent = new Intent(RotateActivity.this,MainActivity2.class);
+            Intent intent = new Intent(RotateActivity.this, MainActivity2.class);
             finish();
         });
     }

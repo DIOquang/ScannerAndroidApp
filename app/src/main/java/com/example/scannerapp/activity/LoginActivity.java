@@ -1,6 +1,7 @@
-package com.example.scannerapp;
+package com.example.scannerapp.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences; // THÊM import này
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,7 +10,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.scannerapp.DatabaseHelper;
+import com.example.scannerapp.R;
+
 public class LoginActivity extends AppCompatActivity {
+
+    public static final String SHARED_PREFS = "ScannerAppPrefs";
+    public static final String LOGGED_IN_USER_EMAIL = "loggedInUserEmail";
 
     private DatabaseHelper databaseHelper;
     private EditText emailEditText;
@@ -31,6 +38,12 @@ public class LoginActivity extends AppCompatActivity {
             String password = passwordEditText.getText().toString().trim();
 
             if (databaseHelper.checkUser(email, password)) {
+
+                SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(LOGGED_IN_USER_EMAIL, email);
+                editor.apply(); // Lưu lại thông tin
+
                 Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                 goToMainActivity(email);
             } else {

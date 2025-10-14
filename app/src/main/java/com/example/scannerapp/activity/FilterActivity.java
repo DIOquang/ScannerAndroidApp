@@ -1,4 +1,4 @@
-package com.example.scannerapp;
+package com.example.scannerapp.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,6 +8,9 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.scannerapp.BitmapHolder;
+import com.example.scannerapp.R;
 
 import jp.co.cyberagent.android.gpuimage.GPUImageView;
 import jp.co.cyberagent.android.gpuimage.filter.GPUImageContrastFilter;

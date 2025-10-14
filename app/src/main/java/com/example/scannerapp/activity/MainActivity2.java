@@ -1,4 +1,4 @@
-package com.example.scannerapp;
+package com.example.scannerapp.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.scannerapp.BitmapHolder;
+import com.example.scannerapp.R;
 
 import java.io.IOException;
 

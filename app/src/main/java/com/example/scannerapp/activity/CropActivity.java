@@ -1,4 +1,4 @@
-package com.example.scannerapp;
+package com.example.scannerapp.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.canhub.cropper.CropImageView;
+import com.example.scannerapp.BitmapHolder;
+import com.example.scannerapp.R;
 
 public class CropActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.scannerapp;
+package com.example.scannerapp.activity;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -6,6 +6,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.scannerapp.DatabaseHelper;
+import com.example.scannerapp.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

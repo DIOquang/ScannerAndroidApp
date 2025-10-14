@@ -42,24 +42,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    /**
-     * Phương thức này để thêm người dùng mới vào database
-     */
+
     public boolean addUser(String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_USER_EMAIL, email);
         values.put(COLUMN_USER_PASSWORD, password);
 
-        // Chèn một hàng mới, db.insert sẽ trả về -1 nếu có lỗi
         long result = db.insert(TABLE_USERS, null, values);
         db.close();
-        return result != -1; // Trả về true nếu chèn thành công, false nếu thất bại
+        return result != -1;
     }
 
-    /**
-     * Phương thức này để kiểm tra xem người dùng có tồn tại trong database không
-     */
+
     public boolean checkUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         // Các cột cần lấy

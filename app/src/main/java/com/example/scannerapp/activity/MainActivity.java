@@ -1,14 +1,18 @@
-package com.example.scannerapp;
+package com.example.scannerapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.scannerapp.fragment.ConvertFragment;
+import com.example.scannerapp.fragment.FormFragment;
+import com.example.scannerapp.R;
+import com.example.scannerapp.fragment.ScanFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.example.scannerapp.LoginActivity; // Dòng import này bây giờ sẽ hoạt động
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // --- PHẦN CODE MỚI ĐỂ XỬ LÝ ĐĂNG XUẤT ---
-        TextView welcomeTextView = findViewById(R.id.text_view_welcome);
+//        TextView welcomeTextView = findViewById(R.id.text_view_welcome);
         Button logoutButton = findViewById(R.id.btn_logout);
 
         // 1. Nhận email từ LoginActivity
@@ -26,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         String userEmail = intent.getStringExtra("USER_EMAIL");
 
         // 2. Hiển thị lời chào
-        if (userEmail != null && !userEmail.isEmpty()) {
-            welcomeTextView.setText("Wellcome!!\n" + userEmail);
-        }
+//        if (userEmail != null && !userEmail.isEmpty()) {
+//            welcomeTextView.setText("Wellcome!!" + userEmail);
+//        }
 
         // 3. Xử lý sự kiện đăng xuất
         logoutButton.setOnClickListener(v -> {
@@ -38,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(logoutIntent);
             finish();
         });
-        // --- KẾT THÚC PHẦN CODE MỚI ---
 
-
-        // --- PHẦN CODE CŨ CỦA BẠN (GIỮ NGUYÊN) ---
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
 
         if (savedInstanceState == null) {

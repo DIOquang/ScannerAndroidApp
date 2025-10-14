@@ -1,4 +1,4 @@
-package com.example.scannerapp;
+package com.example.scannerapp.fragment;
 
 import android.Manifest;
 import android.app.Activity;
@@ -34,6 +34,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.scannerapp.PdfAdapter;
+import com.example.scannerapp.PdfFile;
+import com.example.scannerapp.R;
+import com.example.scannerapp.activity.LoginActivity; // THÊM import này
+import com.example.scannerapp.activity.MainActivity2;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,15 +60,14 @@ public class ScanFragment extends Fragment {
     private Button selectFolderButton;
 
     private SharedPreferences prefs;
-    private static final String PREFS_NAME = "ScannerAppPrefs";
-    private static final String KEY_FOLDER_URI = "folderUri";
+    // Bỏ khóa cố định
+    // private static final String KEY_FOLDER_URI = "folderUri";
 
     private static final int REQ_CAMERA = 1001;
     private Uri photoUri;
 
     // --- ActivityResultLaunchers ---
 
-    // Launcher để xử lý kết quả trả về từ trình chọn thư mục
     private final ActivityResultLauncher<Uri> folderPickerLauncher = registerForActivityResult(
             new ActivityResultContracts.OpenDocumentTree(),
             uri -> {
@@ -70,7 +75,8 @@ public class ScanFragment extends Fragment {
                     final int takeFlags = Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
                     requireContext().getContentResolver().takePersistableUriPermission(uri, takeFlags);
 
-                    prefs.edit().putString(KEY_FOLDER_URI, uri.toString()).apply();
+                    // THAY ĐỔI: Sử dụng khóa động để lưu URI
+                    prefs.edit().putString(getUserSpecificFolderKey(), uri.toString()).apply();
 
                     permissionRequestLayout.setVisibility(View.GONE);
                     loadPdfFilesFromSafUri(uri);
@@ -80,7 +86,7 @@ public class ScanFragment extends Fragment {
             }
     );
 
-    // Launcher để xử lý kết quả trả về từ Camera
+    // ... (Các launcher khác không thay đổi) ...
     private final ActivityResultLauncher<Intent> cameraLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == Activity.RESULT_OK && photoUri != null) {
@@ -90,7 +96,6 @@ public class ScanFragment extends Fragment {
                 }
             });
 
-    // Launcher để xử lý kết quả trả về từ Thư viện ảnh
     private final ActivityResultLauncher<String> pickImageLauncher =
             registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
                 if (uri != null) {
@@ -104,12 +109,12 @@ public class ScanFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        // THAY ĐỔI: Lấy tên SharedPreferences từ hằng số của LoginActivity
+        prefs = requireContext().getSharedPreferences(LoginActivity.SHARED_PREFS, Context.MODE_PRIVATE);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_scan, container, false);
     }
 
@@ -117,7 +122,6 @@ public class ScanFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Khởi tạo views
         recyclerView = view.findViewById(R.id.recycler_view_pdfs);
         loadingIndicator = view.findViewById(R.id.loading_indicator);
         emptyView = view.findViewById(R.id.empty_view_text);
@@ -126,20 +130,28 @@ public class ScanFragment extends Fragment {
 
         setupRecyclerView();
 
-        // Gán sự kiện cho nút chọn thư mục
         selectFolderButton.setOnClickListener(v -> folderPickerLauncher.launch(null));
 
-        // Gán sự kiện cho nút Scan Document (ID: button)
         Button scanButton = view.findViewById(R.id.button);
         scanButton.setOnClickListener(v -> openCamera());
 
-        // === PHẦN ĐƯỢC THÊM VÀO ===
-        // Gán sự kiện cho nút chọn ảnh từ thư viện (ID: Gallery)
         Button galleryButton = view.findViewById(R.id.Gallery);
         galleryButton.setOnClickListener(v -> openGalleryPicker());
-        // ============================
 
         checkFolderPermission();
+    }
+
+    // THÊM MỚI: Phương thức tạo khóa động dựa trên email người dùng
+    private String getUserSpecificFolderKey() {
+        String userEmail = prefs.getString(LoginActivity.LOGGED_IN_USER_EMAIL, null);
+
+        if (userEmail == null || userEmail.isEmpty()) {
+            // Trường hợp này không nên xảy ra nếu người dùng đã đăng nhập
+            // nhưng để phòng ngừa lỗi
+            throw new IllegalStateException("User email not found in SharedPreferences. User might not be logged in.");
+        }
+        // Tạo ra một khóa duy nhất, ví dụ: "folderUri_user@example.com"
+        return "folderUri_" + userEmail;
     }
 
 
@@ -153,15 +165,27 @@ public class ScanFragment extends Fragment {
     }
 
     private void checkFolderPermission() {
-        String savedUriString = prefs.getString(KEY_FOLDER_URI, null);
-        if (savedUriString != null) {
-            Uri folderUri = Uri.parse(savedUriString);
-            loadPdfFilesFromSafUri(folderUri);
-        } else {
+        try {
+            // THAY ĐỔI: Sử dụng khóa động để lấy URI
+            String savedUriString = prefs.getString(getUserSpecificFolderKey(), null);
+            if (savedUriString != null) {
+                Uri folderUri = Uri.parse(savedUriString);
+                loadPdfFilesFromSafUri(folderUri);
+            } else {
+                permissionRequestLayout.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.GONE);
+            }
+        } catch (IllegalStateException e) {
+            // Xử lý lỗi nếu không tìm thấy email (người dùng chưa đăng nhập)
+            Log.e("ScanFragment", e.getMessage());
+            Toast.makeText(getContext(), "Lỗi: Người dùng chưa đăng nhập.", Toast.LENGTH_LONG).show();
+            // Có thể ẩn các nút chức năng và hiển thị thông báo yêu cầu đăng nhập
             permissionRequestLayout.setVisibility(View.VISIBLE);
-            recyclerView.setVisibility(View.GONE);
+            selectFolderButton.setEnabled(false);
         }
     }
+
+    // ... (Các phương thức còn lại: loadPdfFilesFromSafUri, updateUiOnMainThread, openCamera, v.v... không thay đổi) ...
 
     private void loadPdfFilesFromSafUri(Uri folderUri) {
         loadingIndicator.setVisibility(View.VISIBLE);

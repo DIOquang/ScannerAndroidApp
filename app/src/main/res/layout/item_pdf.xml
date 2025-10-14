@@ -30,7 +30,7 @@
             android:textColor="@android:color/black"
             android:maxLines="2"
             android:ellipsize="end"
-            tools:text="Đây là tên của một file PDF rất dài để kiểm tra.pdf" />
+            tools:text="Đây là tên của một file PDF.pdf" />
 
         <TextView
             android:id="@+id/pdf_details"
