@@ -1,8 +1,6 @@
-package com.example.scannerapp; // Thay bằng package của bạn
-
+package com.example.scannerapp;
 import android.net.Uri;
 
-// Lớp này dùng để chứa thông tin của một file PDF
 public class PdfFile {
     final Uri uri;
     final String name;
