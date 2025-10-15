@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         Button logoutButton = findViewById(R.id.btn_logout);
 
         // 1. Nhận email từ LoginActivity
-        Intent intent = getIntent();
-        String userEmail = intent.getStringExtra("USER_EMAIL");
+        //Intent intent = getIntent();
+        //String userEmail = intent.getStringExtra("USER_EMAIL");
 
         // 2. Hiển thị lời chào
 //        if (userEmail != null && !userEmail.isEmpty()) {

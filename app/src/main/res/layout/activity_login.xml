@@ -20,7 +20,7 @@
         android:id="@+id/edit_text_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="Username"
         android:inputType="textEmailAddress"
         android:minHeight="48dp" />
 
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Mật khẩu"
+        android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp" />
 

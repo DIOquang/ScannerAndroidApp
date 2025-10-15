@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(LOGGED_IN_USER_EMAIL, email);
-                editor.apply(); // Lưu lại thông tin
+                editor.apply();
 
                 Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
                 goToMainActivity(email);

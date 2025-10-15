@@ -54,10 +54,6 @@ public class LastActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(LoginActivity.SHARED_PREFS, MODE_PRIVATE);
         String userEmail = prefs.getString(LoginActivity.LOGGED_IN_USER_EMAIL, null);
 
-        if (userEmail == null) {
-            Toast.makeText(this, "Lỗi: Người dùng chưa đăng nhập.", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         String folderKey = "folderUri_" + userEmail;
         String folderUriString = prefs.getString(folderKey, null);

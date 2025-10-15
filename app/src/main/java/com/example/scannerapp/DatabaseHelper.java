@@ -57,11 +57,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean checkUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        // Các cột cần lấy
         String[] columns = {COLUMN_USER_ID};
-        // Mệnh đề WHERE
         String selection = COLUMN_USER_EMAIL + " = ?" + " AND " + COLUMN_USER_PASSWORD + " = ?";
-        // Các giá trị cho mệnh đề WHERE
         String[] selectionArgs = {email, password};
 
         // Thực hiện truy vấn
